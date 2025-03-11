@@ -5,7 +5,7 @@
 .vscode/
 
 # Compiled binary files
-dist/
+out/
 
 # Working "numbers" file
 numbers
