@@ -1,0 +1,3 @@
+[submodule "src/lib/jreadline"]
+	path = src/lib/jreadline
+	url = git@github.com:jleskey/jreadline.git
