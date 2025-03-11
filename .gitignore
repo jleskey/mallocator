@@ -1,11 +1,14 @@
-# Compiled binary files
-dist/
-
 # macOS
 .DS_Store
 
-# Locks
-.~lock.*
+# VS Code
+.vscode/
+
+# Compiled binary files
+dist/
 
 # Working "numbers" file
 numbers
+
+# Locks
+.~lock.*
