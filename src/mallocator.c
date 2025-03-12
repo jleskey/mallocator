@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void printIntro();
+void printIntro(char *path);
 
 int main(int argc, char *argv[])
 {
@@ -26,6 +26,11 @@ int main(int argc, char *argv[])
     }
 }
 
+/**
+ * Prints welcome message and usage guide.
+ *
+ * @param[in] path Path to the mallocator binary
+ */
 void printIntro(char *path)
 {
     printf(
