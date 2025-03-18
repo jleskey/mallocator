@@ -18,7 +18,7 @@ int main(int argc, char *argv[])
 
     while (1)
     {
-        char *input = promptInput(">>>");
+        char *input = promptInput(">>>", J_TRIM_REDUCE, false);
 
         char command = input[0];
 
