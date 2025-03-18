@@ -1,11 +1,19 @@
+/**
+ * @file mallocator.c
+ * @author Joseph Leskey
+ * @date 18 March 2025
+ */
+
 #include "lib/jreadline/jreadline.h"
+#include "mallocator.h"
 #include <stdio.h>
 #include <stdlib.h>
-
-void printIntro(char *path);
+#include <ctype.h>
 
 int main(int argc, char *argv[])
 {
+    struct request registry[1000];
+
     printIntro(argc ? argv[0] : "./mallocator");
 
     while (1)
@@ -14,36 +22,25 @@ int main(int argc, char *argv[])
 
         char command = input[0];
 
-        switch (command)
+        if (command == 'a')
         {
-        case 'X':
+            // TODO: Allocate a block
+        }
+        else if (command == 'd')
+        {
+            // TODO: Deallocate a block
+        }
+        else if (command == 'S')
+        {
+            // TODO: List allocated blocks
+        }
+        else if (command == 'X')
+        {
             exit(EXIT_SUCCESS);
-            break;
-        default:
+        }
+        else
+        {
             printf("Unknown command: %c\n", command);
-            break;
         }
     }
-}
-
-/**
- * Prints welcome message and usage guide.
- *
- * @param[in] path Path to the mallocator binary
- */
-void printIntro(char *path)
-{
-    printf(
-        "\n"
-        "+---------------------------------+\n"
-        "| Welcome to Joseph's Mallocator! |\n"
-        "+---------------------------------+\n"
-        "\n"
-        "Usage: %s\n\n"
-        "a <N>  –   Allocate N bytes of memory\n"
-        "d <N>  –   Deallocate memory block at allocation number N\n"
-        "S      –   List allocated memory blocks\n"
-        "X      –   Exit\n"
-        "\n",
-        path);
 }

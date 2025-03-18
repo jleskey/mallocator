@@ -1,20 +1,29 @@
-# Compiler constants
+# Compiler settings
 CC = gcc
 CFLAGS = -Wall -Wextra
 
-# Output directory
+# Directories
+SRC_DIR = src
 OUT_DIR = out
 
-# Source files
-SRC_FILES = src/mallocator.c src/lib/jreadline/jreadline.c
+# Files
+SRCS = $(shell find $(SRC_DIR) -type f -name "*.c")
+OBJS = $(patsubst $(SRC_DIR)/%.c, $(OUT_DIR)/%.o, $(SRCS))
+TARGET = $(OUT_DIR)/mallocator
 
 # Program binary
-all: $(OUT_DIR)/mallocator
+all: $(TARGET)
 
-$(OUT_DIR)/mallocator: $(SRC_FILES)
+# Object linking
+$(TARGET): $(OBJS)
 	@mkdir -p $(OUT_DIR)
-	$(CC) $(CFLAGS) -o $@ $^
+	$(CC) $(CFLAGS) -o $(TARGET) $(OBJS)
+
+# Compilation
+$(OUT_DIR)/%.o: $(SRC_DIR)/%.c
+	@mkdir -p $(dir $@)
+	$(CC) $(CFLAGS) -c $< -o $@
 
 # Clean-up script
 clean:
-	rm -rf $(OUT_DIR)/*
+	rm -rf $(OUT_DIR)
