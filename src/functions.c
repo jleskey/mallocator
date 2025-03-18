@@ -5,6 +5,7 @@
  */
 
  #include "mallocator.h"
+ #include "functions.h"
  #include <stdio.h>
 
 void printIntro(char *path)

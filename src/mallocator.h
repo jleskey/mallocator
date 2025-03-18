@@ -7,6 +7,8 @@
 #ifndef MALLOCATOR_H
 #define MALLOCATOR_H
 
+#define MAX_REQUESTS 1000
+
 /** Representation of a command-driven request and its associated data */
 struct request
 {
@@ -19,12 +21,5 @@ struct request
     /** Stores an actual request */
     int valid;
 };
-
-/**
- * Prints welcome message and usage guide.
- *
- * @param[in] path Path to the mallocator binary
- */
-void printIntro(char *path);
 
 #endif // MALLOCATOR_H
