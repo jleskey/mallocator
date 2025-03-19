@@ -37,7 +37,7 @@ int main(int argc, char *argv[])
         }
         else if (command == 'X')
         {
-            exit(EXIT_SUCCESS);
+            return EXIT_SUCCESS;
         }
         else
         {
