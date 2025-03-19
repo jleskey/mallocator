@@ -13,7 +13,7 @@
 
 int main(int argc, char *argv[])
 {
-    struct request registry[1000];
+    struct request registry[MAX_REQUESTS];
 
     printIntro(argc ? argv[0] : "./mallocator");
 
