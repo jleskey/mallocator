@@ -1,7 +1,7 @@
 /**
  * @file mallocator.c
  * @author Joseph Leskey
- * @date 18 March 2025
+ * @date 19 March 2025
  */
 
 #include "lib/jreadline/jreadline.h"
@@ -13,7 +13,7 @@
 
 int main(int argc, char *argv[])
 {
-    struct request registry[MAX_REQUESTS];
+    RequestRegistry registry = createRegistry();
 
     printIntro(argc ? argv[0] : "./mallocator");
 
@@ -25,15 +25,40 @@ int main(int argc, char *argv[])
 
         if (command == 'a')
         {
-            // TODO: Allocate a block
+            unsigned int size;
+
+            if (sscanf(&input[2], "%u", &size) == 1)
+            {
+                if (input[2] != '-')
+                {
+                    allocateBlock(&registry, size);
+                }
+                else
+                {
+                    printf("Please provide a positive block size.\n");
+                }
+            }
+            else
+            {
+                printf("Please provide the allocation block size in bytes.\n");
+            }
         }
         else if (command == 'd')
         {
-            // TODO: Deallocate a block
+            int id;
+
+            if (sscanf(&input[2], "%d", &id) == 1)
+            {
+                deallocateBlock(&registry, id);
+            }
+            else
+            {
+                printf("Please provide the allocation block number.\n");
+            }
         }
         else if (command == 'S')
         {
-            // TODO: List allocated blocks
+            listBlocks(&registry);
         }
         else if (command == 'X')
         {

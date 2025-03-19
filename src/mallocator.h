@@ -1,7 +1,7 @@
 /**
  * @file mallocator.h
  * @author Joseph Leskey
- * @date 18 March 2025
+ * @date 19 March 2025
  */
 
 #ifndef MALLOCATOR_H
@@ -10,7 +10,7 @@
 #define MAX_REQUESTS 1000
 
 /** Representation of a command-driven request and its associated data */
-struct request
+typedef struct Request
 {
     /** Request allocation number */
     int id;
@@ -20,6 +20,17 @@ struct request
     unsigned int size;
     /** Stores an actual request */
     int valid;
-};
+} Request;
+
+/** A request registry */
+typedef struct RequestRegistry
+{
+    /** List of requests */
+    Request requests[MAX_REQUESTS];
+    /** Counter for used blocks*/
+    int length;
+    /** Counter for active blocks*/
+    int count;
+} RequestRegistry;
 
 #endif // MALLOCATOR_H
