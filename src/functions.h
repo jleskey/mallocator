@@ -1,7 +1,6 @@
 /**
  * @file functions.h
  * @author Joseph Leskey
- * @date 19 March 2025
  */
 
  #ifndef MALLOCATOR_FUNCTIONS_H

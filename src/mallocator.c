@@ -1,7 +1,6 @@
 /**
  * @file mallocator.c
  * @author Joseph Leskey
- * @date 19 March 2025
  */
 
 #include "lib/jclib/jclib.h"

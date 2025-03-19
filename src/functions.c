@@ -1,7 +1,6 @@
 /**
  * @file functions.c
  * @author Joseph Leskey
- * @date 19 March 2025
  */
 
 #include "mallocator.h"
