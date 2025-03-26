@@ -3,6 +3,7 @@
  * @author Joseph Leskey
  */
 
+#include "lib/jclib/jclib.h"
 #include "mallocator.h"
 #include "functions.h"
 #include <stdio.h>
@@ -44,7 +45,7 @@ void allocateBlock(RequestRegistry *registry, unsigned int size)
             registry->requests[registry->length].addr = allocation;
             registry->requests[registry->length].size = size;
             registry->requests[registry->length].valid = 1;
-            printf("Allocated #%d at %p (%u bytes)\n", registry->length,
+            printf("Allocated Block %d at %p (%u bytes)\n", registry->length,
                    allocation, size);
             registry->length++;
             registry->count++;
@@ -80,15 +81,43 @@ void listBlocks(RequestRegistry *registry)
 {
     if (registry->count)
     {
+        JTableProperties table = jTableInit(3, "ID", "Address", "Size");
+
         for (int i = 0; i < registry->length; i++)
         {
-            if (registry->requests[i].valid)
+            Request req = registry->requests[i];
+
+            if (req.valid)
             {
-                printf("ID: %d, Address: %p, Size: %u bytes\n",
-                       registry->requests[i].id, registry->requests[i].addr,
-                       registry->requests[i].size);
+                int idLength = jlenf("%d", req.id);
+                int addrLength = jlenf("%p", req.addr);
+                int sizeLength = jlenf("%u bytes", req.size);
+
+                jTableAdjust(&table, idLength, addrLength, sizeLength);
             }
         }
+
+        jTableRow(&table, "ID", "Address", "Size");
+
+        for (int i = 0; i < registry->length; i++)
+        {
+            Request req = registry->requests[i];
+
+            if (req.valid)
+            {
+                char idString[J_INT_STRING_SIZE];
+                char addrString[J_PTR_STRING_SIZE];
+                char sizeString[J_UINT_STRING_SIZE];
+
+                intToString(idString, J_INT_STRING_SIZE, req.id);
+                ptrToString(addrString, J_PTR_STRING_SIZE, req.addr);
+                uintToString(sizeString, J_UINT_STRING_SIZE, req.size);
+
+                jTableRow(&table, idString, addrString, sizeString);
+            }
+        }
+
+        jTableBorder(&table);
     }
     else
     {
