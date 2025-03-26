@@ -1,3 +1,3 @@
-[submodule "src/lib/jclib"]
-	path = src/lib/jclib
+[submodule "src/lib/cypress"]
+	path = src/lib/cypress
 	url = git@github.com:jleskey/cypress.git
