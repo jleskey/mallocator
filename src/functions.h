@@ -3,10 +3,10 @@
  * @author Joseph Leskey
  */
 
- #ifndef MALLOCATOR_FUNCTIONS_H
- #define MALLOCATOR_FUNCTIONS_H
+#ifndef MALLOCATOR_FUNCTIONS_H
+#define MALLOCATOR_FUNCTIONS_H
 
- #include "mallocator.h"
+#include "mallocator.h"
 
 /**
  * Prints welcome message and usage guide.

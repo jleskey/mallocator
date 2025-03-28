@@ -47,8 +47,9 @@ void allocateBlock(RequestRegistry *registry, unsigned int size)
             registry->requests[registry->length].valid = 1;
 
             // Make sure that we're actually using up space.
-            char *byte = (char *) allocation;
-            for (unsigned int i = 0; i < size; i++) {
+            char *byte = (char *)allocation;
+            for (unsigned int i = 0; i < size; i++)
+            {
                 byte[i] = 1;
             }
 
