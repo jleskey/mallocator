@@ -18,10 +18,11 @@ void printIntro(char *path)
         "+---------------------------------+\n"
         "\n"
         "Usage: %s\n\n"
-        "a <N>  –   Allocate N bytes of memory\n"
-        "d <N>  –   Deallocate memory block at allocation number N\n"
-        "S      –   List allocated memory blocks\n"
-        "X      –   Exit\n"
+        "a <N>          –   Allocate N bytes of memory\n"
+        "d <N>          –   Deallocate memory block N\n"
+        "w <B> <N> <C>  –   Write N characters C to memory block N\n"
+        "S              –   List allocated memory blocks\n"
+        "X              –   Exit\n"
         "\n",
         path);
 }
@@ -71,7 +72,7 @@ void allocateBlock(RequestRegistry *registry, unsigned int size)
 
 void deallocateBlock(RequestRegistry *registry, int id)
 {
-    if (id >= 0 && id < registry->length && registry->requests[id].valid)
+    if (blockExists(registry, id))
     {
         free(registry->requests[id].addr);
         registry->requests[id].valid = 0;
@@ -79,6 +80,37 @@ void deallocateBlock(RequestRegistry *registry, int id)
                registry->requests[id].addr, registry->requests[id].size);
         registry->requests[id].addr = NULL;
         registry->count--;
+    }
+    else
+    {
+        printf("Could not locate block %d.\n", id);
+    }
+}
+
+void writeToBlock(RequestRegistry *registry, int id, unsigned int count,
+                  char character)
+{
+    if (blockExists(registry, id))
+    {
+        unsigned int i = 0;
+        char *byte = (char *)registry->requests[id].addr;
+
+        for (; i < count; i++, byte++)
+        {
+            if (i < registry->requests[id].size)
+            {
+                *byte = character;
+            }
+            else
+            {
+                printf("Reached end of block with %d characters remaining.\n",
+                       count - i);
+                break;
+            }
+        }
+
+        printf("Wrote %d instances of \"%c\" to block %d\n", i, character,
+               id);
     }
     else
     {
@@ -133,4 +165,9 @@ void listBlocks(RequestRegistry *registry)
     {
         printf("The registry is empty.\n");
     }
+}
+
+bool blockExists(RequestRegistry *registry, int id)
+{
+    return id >= 0 && id < registry->length && registry->requests[id].valid;
 }

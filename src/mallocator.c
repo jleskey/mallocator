@@ -55,6 +55,26 @@ int main(int argc, char *argv[])
                 printf("Please provide the allocation block number.\n");
             }
         }
+        else if (command == 'w')
+        {
+            int id;
+            unsigned int count;
+            char character;
+
+            if (sscanf(&input[2], "%d %u %c", &id, &count, &character) == 3)
+            {
+                writeToBlock(&registry, id, count, character);
+            }
+            else
+            {
+                printf(
+                    "Please provide the following information.\n"
+                    "   - Block ID\n"
+                    "   - Number of characters to write\n"
+                    "   - Character to write\n"
+                );
+            }
+        }
         else if (command == 'S')
         {
             listBlocks(&registry);
