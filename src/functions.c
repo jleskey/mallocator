@@ -3,7 +3,7 @@
  * @author Joseph Leskey
  */
 
-#include "lib/jclib/jclib.h"
+#include "lib/cypress/cypress.h"
 #include "mallocator.h"
 #include "functions.h"
 #include <stdio.h>
