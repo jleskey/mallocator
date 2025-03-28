@@ -110,8 +110,8 @@ void writeToBlock(RequestRegistry *registry, int id, unsigned int count,
             }
         }
 
-        printf("Wrote %d instances of \"%c\" to block %d.\n", i, character,
-               id);
+        printf("Wrote %d instance%s of \"%c\" to block %d.\n", i,
+               i == 1 ? "" : "s", character, id);
     }
     else
     {
