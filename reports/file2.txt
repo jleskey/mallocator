@@ -1,0 +1,20 @@
+ubuntu@csc3044:~$ cat /proc/39268/maps
+c81e318a0000-c81e318a3000 r-xp 00000000 08:01 262783                     /home/ubuntu/lab5/out/mallocator
+c81e318bf000-c81e318c0000 r--p 0000f000 08:01 262783                     /home/ubuntu/lab5/out/mallocator
+c81e318c0000-c81e318c1000 rw-p 00010000 08:01 262783                     /home/ubuntu/lab5/out/mallocator
+c81e380df000-c81e38100000 rw-p 00000000 00:00 0                          [heap]
+f06206800000-f062421ad000 rw-p 00000000 00:00 0
+f06242200000-f0627dbad000 rw-p 00000000 00:00 0
+f0627dc15000-f0627dc90000 rw-p 00000000 00:00 0
+f0627dc90000-f0627de2a000 r-xp 00000000 08:01 3025                       /usr/lib/aarch64-linux-gnu/libc.so.6
+f0627de2a000-f0627de3d000 ---p 0019a000 08:01 3025                       /usr/lib/aarch64-linux-gnu/libc.so.6
+f0627de3d000-f0627de40000 r--p 0019d000 08:01 3025                       /usr/lib/aarch64-linux-gnu/libc.so.6
+f0627de40000-f0627de42000 rw-p 001a0000 08:01 3025                       /usr/lib/aarch64-linux-gnu/libc.so.6
+f0627de42000-f0627de4e000 rw-p 00000000 00:00 0
+f0627de5d000-f0627de84000 r-xp 00000000 08:01 3022                       /usr/lib/aarch64-linux-gnu/ld-linux-aarch64.so.1
+f0627de96000-f0627de98000 rw-p 00000000 00:00 0
+f0627de98000-f0627de9a000 r--p 00000000 00:00 0                          [vvar]
+f0627de9a000-f0627de9b000 r-xp 00000000 00:00 0                          [vdso]
+f0627de9b000-f0627de9d000 r--p 0002e000 08:01 3022                       /usr/lib/aarch64-linux-gnu/ld-linux-aarch64.so.1
+f0627de9d000-f0627de9f000 rw-p 00030000 08:01 3022                       /usr/lib/aarch64-linux-gnu/ld-linux-aarch64.so.1
+ffffdcaae000-ffffdcacf000 rw-p 00000000 00:00 0                          [stack]
