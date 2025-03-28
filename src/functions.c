@@ -20,7 +20,7 @@ void printIntro(char *path)
         "Usage: %s\n\n"
         "a <N>          –   Allocate N bytes of memory\n"
         "d <N>          –   Deallocate memory block N\n"
-        "w <B> <N> <C>  –   Write N characters C to memory block N\n"
+        "w <B> <N> <C>  –   Write N characters C to memory block B\n"
         "S              –   List allocated memory blocks\n"
         "X              –   Exit\n"
         "\n",
@@ -103,8 +103,9 @@ void writeToBlock(RequestRegistry *registry, int id, unsigned int count,
             }
             else
             {
-                printf("Reached end of block with %d characters remaining.\n",
-                       count - i);
+                int remainder = count - i;
+                printf("Reached end of block with %d character%s remaining.\n",
+                       remainder, remainder == 1 ? "" : "s");
                 break;
             }
         }
