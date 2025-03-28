@@ -66,14 +66,15 @@ void deallocateBlock(RequestRegistry *registry, int id)
     if (id >= 0 && id < registry->length && registry->requests[id].valid)
     {
         free(registry->requests[id].addr);
+        registry->requests[id].addr = NULL;
         registry->requests[id].valid = 0;
-        printf("Allocated #%d at %p (%u bytes)\n", registry->length,
+        printf("Deallocated block %d at %p (%u bytes)\n", id,
                registry->requests[id].addr, registry->requests[id].size);
         registry->count--;
     }
     else
     {
-        printf("Could not locate block #%d.\n", id);
+        printf("Could not locate block %d.\n", id);
     }
 }
 
