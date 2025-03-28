@@ -54,7 +54,7 @@ void allocateBlock(RequestRegistry *registry, unsigned int size)
                 byte[i] = 1;
             }
 
-            printf("Allocated Block %d at %p (%u bytes)\n", registry->length,
+            printf("Allocated Block %d at %p (%u bytes).\n", registry->length,
                    allocation, size);
             registry->length++;
             registry->count++;
@@ -76,7 +76,7 @@ void deallocateBlock(RequestRegistry *registry, int id)
     {
         free(registry->requests[id].addr);
         registry->requests[id].valid = 0;
-        printf("Deallocated block %d at %p (%u bytes)\n", id,
+        printf("Deallocated block %d at %p (%u bytes).\n", id,
                registry->requests[id].addr, registry->requests[id].size);
         registry->requests[id].addr = NULL;
         registry->count--;
@@ -109,7 +109,7 @@ void writeToBlock(RequestRegistry *registry, int id, unsigned int count,
             }
         }
 
-        printf("Wrote %d instances of \"%c\" to block %d\n", i, character,
+        printf("Wrote %d instances of \"%c\" to block %d.\n", i, character,
                id);
     }
     else
