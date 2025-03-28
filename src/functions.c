@@ -119,6 +119,7 @@ void listBlocks(RequestRegistry *registry)
         }
 
         jTableBorder(&table);
+        jTableDestruct(&table);
     }
     else
     {
