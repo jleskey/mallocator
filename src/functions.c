@@ -45,6 +45,13 @@ void allocateBlock(RequestRegistry *registry, unsigned int size)
             registry->requests[registry->length].addr = allocation;
             registry->requests[registry->length].size = size;
             registry->requests[registry->length].valid = 1;
+
+            // Make sure that we're actually using up space.
+            char *byte = (char *) allocation;
+            for (unsigned int i = 0; i < size; i++) {
+                byte[i] = 1;
+            }
+
             printf("Allocated Block %d at %p (%u bytes)\n", registry->length,
                    allocation, size);
             registry->length++;
