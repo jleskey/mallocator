@@ -16,9 +16,11 @@ int main(int argc, char *argv[])
 
     printIntro(argc ? argv[0] : "./mallocator");
 
+    char *input = NULL;
+
     while (1)
     {
-        char *input = promptInput(">>>", J_TRIM_REDUCE, false);
+        jSafePrompt(&input, ">>>", J_TRIM_REDUCE, false);
 
         char command = input[0];
 
@@ -71,8 +73,7 @@ int main(int argc, char *argv[])
                     "Please provide the following information.\n"
                     "   - Block ID\n"
                     "   - Number of characters to write\n"
-                    "   - Character to write\n"
-                );
+                    "   - Character to write\n");
             }
         }
         else if (command == 'S')
